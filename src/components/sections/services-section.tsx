@@ -3,6 +3,29 @@ import { useReveal } from "@/hooks/use-reveal"
 export function ServicesSection() {
   const { ref, isVisible } = useReveal(0.3)
 
+  const topics = [
+    {
+      title: "Жёсткость воды",
+      description: "Определяется содержанием солей кальция (Ca²⁺) и магния (Mg²⁺), которые попадают в воду из почвы и горных пород",
+      direction: "top",
+    },
+    {
+      title: "Виды жёсткости",
+      description: "Временная — исчезает при кипячении. Постоянная — не устраняется кипячением. Обе снижают эффективность шампуней",
+      direction: "right",
+    },
+    {
+      title: "Строение волоса",
+      description: "Кутикула (внешний слой) → Кортекс (основная часть) → Медулла (внутренний слой). Кутикула отвечает за блеск и гладкость",
+      direction: "left",
+    },
+    {
+      title: "Механизм воздействия",
+      description: "Соли кальция и магния оседают на кутикуле, разрушают её чешуйки — волосы становятся тусклыми, жёсткими и ломкими",
+      direction: "bottom",
+    },
+  ]
+
   return (
     <section
       ref={ref}
@@ -15,34 +38,13 @@ export function ServicesSection() {
           }`}
         >
           <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Услуги
+            Жёсткая вода
           </h2>
-          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Наши компетенции</p>
+          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Состав и воздействие на волосы</p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 md:gap-x-16 md:gap-y-12 lg:gap-x-24">
-          {[
-            {
-              title: "Веб-разработка",
-              description: "Создание современных веб-приложений любой сложности",
-              direction: "top",
-            },
-            {
-              title: "UI/UX Дизайн",
-              description: "Проектирование удобных и красивых интерфейсов",
-              direction: "right",
-            },
-            {
-              title: "Мобильные приложения",
-              description: "Кроссплатформенная разработка для iOS и Android",
-              direction: "left",
-            },
-            {
-              title: "Консалтинг",
-              description: "Техническая экспертиза и стратегическое планирование",
-              direction: "bottom",
-            },
-          ].map((service, i) => (
+          {topics.map((service, i) => (
             <ServiceCard key={i} service={service} index={i} isVisible={isVisible} />
           ))}
         </div>

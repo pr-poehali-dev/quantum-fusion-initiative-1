@@ -3,6 +3,37 @@ import { useReveal } from "@/hooks/use-reveal"
 export function WorkSection() {
   const { ref, isVisible } = useReveal(0.3)
 
+  const items = [
+    {
+      number: "01",
+      title: "Введение",
+      category: "Вода влияет на волосы больше, чем мы думаем",
+      year: "Слайд 2",
+      direction: "left",
+    },
+    {
+      number: "02",
+      title: "Проблема",
+      category: "Жёсткая вода ухудшает состояние волос — но многие этого не учитывают",
+      year: "Слайд 3",
+      direction: "right",
+    },
+    {
+      number: "03",
+      title: "Цель",
+      category: "Изучить влияние жёсткой воды и роль хелаторов в уходе за волосами",
+      year: "Слайд 4",
+      direction: "left",
+    },
+    {
+      number: "04",
+      title: "Задачи",
+      category: "Состав воды · Строение волос · Механизм воздействия · Эксперимент",
+      year: "Слайд 5",
+      direction: "right",
+    },
+  ]
+
   return (
     <section
       ref={ref}
@@ -10,41 +41,19 @@ export function WorkSection() {
     >
       <div className="mx-auto w-full max-w-7xl">
         <div
-          className={`mb-12 transition-all duration-700 md:mb-16 ${
+          className={`mb-8 transition-all duration-700 md:mb-12 ${
             isVisible ? "translate-x-0 opacity-100" : "-translate-x-12 opacity-0"
           }`}
         >
           <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Проекты
+            Введение
           </h2>
-          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Избранные работы</p>
+          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Проблема и актуальность</p>
         </div>
 
-        <div className="space-y-6 md:space-y-8">
-          {[
-            {
-              number: "01",
-              title: "ТехноСтарт",
-              category: "Корпоративный портал",
-              year: "2024",
-              direction: "left",
-            },
-            {
-              number: "02",
-              title: "АльфаТрейд",
-              category: "Финтех платформа",
-              year: "2024",
-              direction: "right",
-            },
-            {
-              number: "03",
-              title: "МедиаПульс",
-              category: "Медиа сервис",
-              year: "2023",
-              direction: "left",
-            },
-          ].map((project, i) => (
-            <ProjectCard key={i} project={project} index={i} isVisible={isVisible} />
+        <div className="space-y-4 md:space-y-6">
+          {items.map((item, i) => (
+            <ProjectCard key={i} project={item} index={i} isVisible={isVisible} />
           ))}
         </div>
       </div>
@@ -70,9 +79,9 @@ function ProjectCard({
 
   return (
     <div
-      className={`group flex items-center justify-between border-b border-foreground/10 py-6 transition-all duration-700 hover:border-foreground/20 md:py-8 ${getRevealClass()}`}
+      className={`group flex items-center justify-between border-b border-foreground/10 py-4 transition-all duration-700 hover:border-foreground/20 md:py-5 ${getRevealClass()}`}
       style={{
-        transitionDelay: `${index * 150}ms`,
+        transitionDelay: `${index * 120}ms`,
         marginLeft: index % 2 === 0 ? "0" : "auto",
         maxWidth: index % 2 === 0 ? "85%" : "90%",
       }}
@@ -82,7 +91,7 @@ function ProjectCard({
           {project.number}
         </span>
         <div>
-          <h3 className="mb-1 font-sans text-2xl font-light text-foreground transition-transform duration-300 group-hover:translate-x-2 md:text-3xl lg:text-4xl">
+          <h3 className="mb-1 font-sans text-xl font-light text-foreground transition-transform duration-300 group-hover:translate-x-2 md:text-2xl lg:text-3xl">
             {project.title}
           </h3>
           <p className="font-mono text-xs text-foreground/50 md:text-sm">{project.category}</p>
